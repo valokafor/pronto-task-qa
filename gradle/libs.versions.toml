@@ -1,0 +1,47 @@
+# Version catalog is a central place for you to declare and version dependencies
+# https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+kotlin = "2.1.20"
+kotlinxDatetime = "0.6.1"
+kotlinxSerializationJSON = "1.7.3"
+kotlinxCoroutines = "1.9.0"
+jupiter-junit = "5.10.0"
+appium = "9.4.0"
+seleniumJava = "4.30.0"
+
+# Android versions
+android-gradle = "8.7.3"
+android-compile-sdk = "35"
+android-target-sdk = "34"
+android-min-sdk = "24"
+
+# Publishing versions
+testtags-version = "1.0.0"
+
+[libraries]
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
+kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-junit" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-junit" }
+appium-java-client = { module = "io.appium:java-client", version.ref = "appium" }
+selenium-java = { module = "org.seleniumhq.selenium:selenium-java", version.ref = "seleniumJava" }
+
+# Android libraries
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
+
+# Libraries can be bundled together for easier import
+[bundles]
+kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
+junit-testing = ["junit-jupiter", "junit-jupiter-engine"]
+selenium-appium = ["appium-java-client", "selenium-java"]
+
+[plugins]
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
